@@ -1,0 +1,5 @@
+--------------------------------------------------------------
+Results computed with the **unofficial** Python eval code.
+Results should be very close to the official MATLAB eval code.
+--------------------------------------------------------------
+0.7857084352769135 0.5633757991885664 0.5162622076659289
