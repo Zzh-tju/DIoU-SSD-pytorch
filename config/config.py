@@ -16,6 +16,7 @@ COLORS = ((255, 0, 0, 128), (0, 255, 0, 128), (0, 0, 255, 128),
 
 voc= {
     'model':"resnet50",
+    'losstype':'Ciou',
     'num_classes':21,
     'mean':(123.675, 116.28, 103.53),
     'std':(1.0,1.0,1.0),#(58.395, 57.12, 57.375),
@@ -33,7 +34,7 @@ voc= {
     'variance': [0.1, 0.2],
     'clip': True,
     'nms_kind': "diounms",
-    'beta1':1.1,
+    'beta1':1.0,
     'name': 'VOC',
     'work_name':"SSD300_VOC_FPN_GIOU",
 }
