@@ -26,13 +26,9 @@ VOC:
 ```
 ### DIoU-NMS
 NMS can be chosen with the `nms_kind` option in the `config/config.py` file. If set it to `greedynms`, it means using greedy-NMS.
-Besides that, we also found that for SSD, we introduce beta1 for DIoU-NMS, that is DIoU = IoU - R_DIoU ^ {beta1}. With this operation, DIoU-NMS can perform better than default beta1=1.0.
+Besides that, we also found that for SSD, we introduce `beta1` for DIoU-NMS, that is DIoU = IoU - R_DIoU ^ {beta1}. With this operation, DIoU-NMS can perform better than default beta1=1.0. But for SSD `beta1=1.0` seems to be good enough.
 ```
-  'nms_kind': "diounms",
-```
-In our constrained search, the following values appear to work well for the DIoU-NMS in SSD. Of course, you can use default `beta1=1.0` for convenience.
-```
-  'beta1':1.1
+  'nms_kind': "diounms"
 ```
 
 ## Fold-Structure
