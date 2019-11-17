@@ -1,4 +1,5 @@
 # DIoU-SSD
+Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression (AAAI 2020)
 
 # SSD_FPN_DIoU,CIoU in PyTorch
 The code references [SSD: Single Shot MultiBox Object Detector, in PyTorch](https://github.com/amdegroot/ssd.pytorch), [mmdet](https://github.com/open-mmlab/mmdetection) and [**JavierHuang**](https://github.com/JaryHuang). Currently, some experiments are carried out on the VOC dataset, if you want to train your own dataset, you can refer to the part of training-yourself-dataset.
