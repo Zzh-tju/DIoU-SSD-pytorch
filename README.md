@@ -30,9 +30,9 @@ Besides that, we also found that for SSD, we introduce beta1 for DIoU-NMS, that 
 ```
   'nms_kind': "diounms",
 ```
-In our constrained search, the following values appear to work well for the DIoU-NMS in SSD. Of course, you can use `beta1=1.0` for convenience.
+In our constrained search, the following values appear to work well for the DIoU-NMS in SSD. Of course, you can use default `beta1=1.0` for convenience.
 ```
-TEST.DIOU_NMS.BETA1=1.1
+  'beta1':1.1
 ```
 
 ## Fold-Structure
