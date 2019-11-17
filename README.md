@@ -144,7 +144,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 ## Performance
 
 #### VOC2007 Test mAP
-- Backbone is the ResNet50:
+- Backbone is the ResNet50-FPN:
 
 | Test |AP|AP75|
 |:-:|:-:|:-:|
