@@ -83,7 +83,7 @@ The fold structure as follow:
 ### Training VOC
 - The pretrained model refer [pretrained-models.pytorch](https://github.com/Cadene/pretrained-models.pytorch),you can download it.
 
-- In the SSD_FPN_GIoU fold:
+- In the DIoU-SSD-pytorch fold:
 ```Shell
 python tools/train.py
 ```
@@ -93,28 +93,14 @@ python tools/train.py
   * You can set the parameters in the train.py (see 'tools/train.py` for options) 
   * In the config,you can set the work_dir to save your training weight.(see 'configs/config.py`) 
 
-
-### Training yourself dataset
-- if you want to trainning yourself dataset, there are some steps:
-1. you need to make the dataset refer the VOC dataset, and take it to data/
-2. in the data/ ,you need make yourself-data.py, for example CRACK.py(it is my dataset), and change it according to your dataset. Also,in the __init__.py you can write something about your dataset
-3. change the config/ config.py, and make your dataset config,like CRACK(dict{})
-4. In the main,load your dataset.
-
-- In the DIoU-SSD-pytorch fold:
-```Shell
-python train.py
-```
-
-
 ## Evaluation
 - To evaluate a trained network:
 
 ```Shell
-python ap.py --trained_model {your_weight_address}
+python tools/ap.py --trained_model {your_weight_address}
 ```
 
-For example: (the output is AP50, AP75, AP)
+For example: (the output is AP50, AP75 and AP of our CIoU loss)
 ```
 Results:
 0.033
