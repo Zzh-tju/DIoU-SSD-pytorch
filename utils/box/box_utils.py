@@ -22,7 +22,6 @@ def bbox_overlaps_diou(bboxes1, bboxes2):
 
     area1 = w1 * h1
     area2 = w2 * h2
-    print('DDDDDDDDDDDDDDDDDDDDDDD')
     center_x1 = (bboxes1[:, 2] + bboxes1[:, 0]) / 2
     center_y1 = (bboxes1[:, 3] + bboxes1[:, 1]) / 2
     center_x2 = (bboxes2[:, 2] + bboxes2[:, 0]) / 2
@@ -46,7 +45,6 @@ def bbox_overlaps_diou(bboxes1, bboxes2):
     return dious
 
 def bbox_overlaps_ciou(bboxes1, bboxes2):
-    print('CCCCCCCCCCCCCCCCCCC')
     rows = bboxes1.shape[0]
     cols = bboxes2.shape[0]
     cious = torch.zeros((rows, cols))
@@ -98,7 +96,6 @@ def bbox_overlaps_ciou(bboxes1, bboxes2):
     return cious
 
 def bbox_overlaps_iou(bboxes1, bboxes2):
-    print('IIIIIIIIIIIIIIIIIIIIIIIIII')
     rows = bboxes1.shape[0]
     cols = bboxes2.shape[0]
     ious = torch.zeros((rows, cols))
@@ -127,7 +124,6 @@ def bbox_overlaps_iou(bboxes1, bboxes2):
     return ious
 
 def bbox_overlaps_giou(bboxes1, bboxes2):
-    print('GGGGGGGGGGGGGGGGG')
     rows = bboxes1.shape[0]
     cols = bboxes2.shape[0]
     ious = torch.zeros((rows, cols))
