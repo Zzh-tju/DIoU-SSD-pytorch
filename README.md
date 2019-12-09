@@ -1,5 +1,4 @@
-## DIoU-SSD
-### Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression (AAAI 2020)
+## Distance-IoU Loss into other STOA detection methods can be found [here](https://github.com/Zzh-tju/DIoU). 
 
 [[arxiv](https://arxiv.org/abs/1911.08287)] [[pdf](https://arxiv.org/pdf/1911.08287.pdf)]
 
