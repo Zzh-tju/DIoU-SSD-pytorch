@@ -82,14 +82,11 @@ def bbox_overlaps_ciou(bboxes1, bboxes2):
     union = area1+area2-inter_area
     u = (inter_diag) / outer_diag
     iou = inter_area / union
+    v = (4 / (math.pi ** 2)) * torch.pow((torch.atan(w2 / h2) - torch.atan(w1 / h1)), 2)
     with torch.no_grad():
-        arctan = torch.atan(w2 / h2) - torch.atan(w1 / h1)
-        v = (4 / (math.pi ** 2)) * torch.pow((torch.atan(w2 / h2) - torch.atan(w1 / h1)), 2)
         S = 1 - iou
         alpha = v / (S + v)
-        w_temp = 2 * w1
-    ar = (8 / (math.pi ** 2)) * arctan * ((w1 - w_temp) * h1)
-    cious = iou - (u + alpha * ar)
+    cious = iou - (u + alpha * v)
     cious = torch.clamp(cious,min=-1.0,max = 1.0)
     if exchange:
         cious = cious.T
