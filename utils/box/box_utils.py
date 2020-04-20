@@ -495,7 +495,7 @@ def diounms(boxes, scores, overlap=0.5, top_k=200, beta1=1.0):
         center_x1 = (x1[i] + x2[i]) / 2
         center_y1 = (y1[i] + y2[i]) / 2
         center_x2 = (xx1 + xx2) / 2
-        center_y2 = (yy2 + yy2) / 2
+        center_y2 = (yy1 + yy2) / 2
         d = (center_x1 - center_x2) ** 2 + (center_y1 - center_y2) ** 2
         cx1 = torch.clamp(xx1, max=x1[i])
         cy1 = torch.clamp(yy1, max=y1[i])
