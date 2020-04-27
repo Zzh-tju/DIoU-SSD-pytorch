@@ -2,7 +2,7 @@
 
 [[arxiv](https://arxiv.org/abs/1911.08287)] [[pdf](https://arxiv.org/pdf/1911.08287.pdf)]
 
-### More improvement for this repo is coming soon. Faster and Better...
+### More improvement for this repo is coming soon. Faster and Better... (2020.4.28)
 
 ## SSD_FPN_DIoU,CIoU in PyTorch
 The code references [SSD: Single Shot MultiBox Object Detector, in PyTorch](https://github.com/amdegroot/ssd.pytorch), [mmdet](https://github.com/open-mmlab/mmdetection) and [**JavierHuang**](https://github.com/JaryHuang). Currently, some experiments are carried out on the VOC dataset, if you want to train your own dataset, more details can be refer to the links above.
