@@ -196,7 +196,7 @@ Currently, NMS only surports `cluster_nms`, `cluster_diounms`, `cluster_weighted
 | Resnet50-FPN | CIoU  | 16  |     Weighted Cluster-NMS    |  26.9  |  37.2  |  53.8  |  58.7  |
 | Resnet50-FPN | CIoU  | 16  | Weighted + Cluster-DIoU-NMS |  26.3  |  38.0  |**54.1**|**59.0**|
 #### Note:
- - Merge NMS is a simplified version of Weighted-NMS. It just use score vector for weighted coordinates, not combine score and IoU. (Refer to [CAD](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8265304) for the details of Weighted-NMS.) Here the box coordinate weighted average is only performed in `IoU> 0.8`. (We searched that `IoU > NMS thresh` is not good for SSD and `IoU>0.9` is almost same to `Cluster-NMS`.)
+ - Here the box coordinate weighted average is only performed in `IoU> 0.8`. We searched that `IoU > NMS thresh` is not good for SSD and `IoU>0.9` is almost same to `Cluster-NMS`. (Refer to [CAD](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8265304) for the details of Weighted-NMS.)
  
  - We further incorporate DIoU into Weighted Cluster-NMS for SSD which can get higher AP.
   
