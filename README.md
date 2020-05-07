@@ -168,7 +168,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 
 #### See `Detect` function of [utils/detection/detection.py](utils/detection/detection.py) for our Cluster-NMS implementation.
 
-#### Currently, NMS only surports 'cluster_nms', 'cluster_diounms', 'cluster_weighted_nms', 'cluster_weighted_diounms'. (See [config/config.py](config/config.py)
+#### Currently, NMS only surports `cluster_nms`, `cluster_diounms`, `cluster_weighted_nms`, `cluster_weighted_diounms`. (See [config/config.py](config/config.py) in `'nms_kind'`.)
 
 #### Hardware
  - 1 RTX 2080 Ti
