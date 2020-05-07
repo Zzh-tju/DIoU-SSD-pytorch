@@ -73,7 +73,7 @@ class Detect(Function):
         self.nms_kind = nms_kind
         self.beta1 = beta1
 
-    def forward1(self, loc_data, conf_data, prior_data):
+    def forward(self, loc_data, conf_data, prior_data):
         """
         Args:
             loc_data: (tensor) Loc preds from loc layers
@@ -155,7 +155,7 @@ class Detect(Function):
                 output[i, cl, :]=torch.cat((score_box[mask],output[i, cl, :]),0)[:self.top_k]
         return output
 
-    def forward(self, loc_data, conf_data, prior_data):
+    def forward_traditional_nms(self, loc_data, conf_data, prior_data):
         """
         Args:
             loc_data: (tensor) Loc preds from loc layers
@@ -167,7 +167,7 @@ class Detect(Function):
             nms_kind: greedynms or diounms
         """
 		
-		# This funtion is no longer supported. Due to extremely time-consuming.
+	# This funtion is no longer supported. Due to extremely time-consuming.
 		
         num = loc_data.size(0) 
         num_priors = prior_data.size(0)
