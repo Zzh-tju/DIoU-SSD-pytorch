@@ -171,7 +171,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
  - Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz
 
 | Backbone  | Loss  | Regression weight  | NMS  | FPS  | time | box AP | box AP75 |
-|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|
+|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|:----:|
 | Resnet50-FPN | CIoU  | 5  |          Fast NMS           |**28.8**|**34.7**|  50.7  |  56.2  |
 | Resnet50-FPN | CIoU  | 5  |        Original NMS         |  17.8  |  56.1  |  51.5  |  56.4  |
 | Resnet50-FPN | CIoU  | 5  |         DIoU-NMS            |  11.4  |  87.6  |  51.9  |  56.6  |
@@ -185,7 +185,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
  - Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
 
 | Backbone  | Loss  | Regression weight  | NMS  | FPS  | time | box AP | box AP75 |
-|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|
+|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|:----:|
 | Resnet50-FPN | CIoU  | 16  |        Original NMS         |  19.7  |  50.9  |  53.3  |  58.2  |
 | Resnet50-FPN | CIoU  | 16  |        Cluster-NMS          |  28.0  |  35.7  |  53.4  |  58.2  |
 | Resnet50-FPN | CIoU  | 16  |      Cluster-DIoU-NMS       |  28.0  |  35.7  |  53.7  |  58.6  |
