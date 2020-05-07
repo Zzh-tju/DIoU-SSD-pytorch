@@ -166,9 +166,9 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 ##### "16" means bbox regression weight is set to 16.
 ## Cluster-NMS
 
-#### See `Detect` function of [utils/detection/detection.py](utils/detection/detection.py) for our Cluster-NMS implementation.
+See `Detect` function of [utils/detection/detection.py](utils/detection/detection.py) for our Cluster-NMS implementation.
 
-#### Currently, NMS only surports `cluster_nms`, `cluster_diounms`, `cluster_weighted_nms`, `cluster_weighted_diounms`. (See `'nms_kind'` in [config/config.py](config/config.py).)
+Currently, NMS only surports `cluster_nms`, `cluster_diounms`, `cluster_weighted_nms`, `cluster_weighted_diounms`. (See `'nms_kind'` in [config/config.py](config/config.py))
 
 #### Hardware
  - 1 RTX 2080 Ti
