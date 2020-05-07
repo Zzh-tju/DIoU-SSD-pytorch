@@ -1,22 +1,29 @@
-## Distance-IoU Loss into other SOTA detection methods can be found [here](https://github.com/Zzh-tju/DIoU). 
+<img src="CIoU.png" width="800px"/>
 
-[[arxiv](https://arxiv.org/abs/1911.08287)] [[pdf](https://arxiv.org/pdf/1911.08287.pdf)]
+## Complete-IoU Loss and Cluster-NMS for improving Object Detection and Instance Segmentation. 
 
-### More improvement for this repo is coming soon. Faster and Better... (2020.4.28)
-
-## SSD_FPN_DIoU,CIoU in PyTorch
-The code references [SSD: Single Shot MultiBox Object Detector, in PyTorch](https://github.com/amdegroot/ssd.pytorch), [mmdet](https://github.com/open-mmlab/mmdetection) and [**JavierHuang**](https://github.com/JaryHuang). Currently, some experiments are carried out on the VOC dataset, if you want to train your own dataset, more details can be refer to the links above.
-
-If you use this work, please consider citing:
+This is the code for our papers:
+ - [Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression](https://arxiv.org/abs/1911.08287)
+ - [Enhancing Geometric Factors into Model Learning and Inference for Object Detection and Instance Segmentation](https://arxiv.org/)
 
 ```
-@inproceedings{zheng2020distance,
+@Inproceedings{zheng2020distance,
   author    = {Zhaohui Zheng, Ping Wang, Wei Liu, Jinze Li, Rongguang Ye, Dongwei Ren},
   title     = {Distance-IoU Loss: Faster and Better Learning for Bounding Box Regression},
   booktitle = {The AAAI Conference on Artificial Intelligence (AAAI)},
    year      = {2020},
 }
+
+@Article{zheng2020ciou,
+  author    = {Zhaohui Zheng, Ping Wang, Dongwei Ren, Wei Liu, Rongguang Ye, Qinghua Hu, Wangmeng Zuo},
+  title={Enhancing Geometric Factors in Model Learning and Inference for Object Detection and Instance Segmentation},
+  journal="arXiv",
+  year={2020}
+}
 ```
+
+## SSD_FPN_DIoU,CIoU in PyTorch
+The code references [SSD: Single Shot MultiBox Object Detector, in PyTorch](https://github.com/amdegroot/ssd.pytorch), [mmdet](https://github.com/open-mmlab/mmdetection) and [**JavierHuang**](https://github.com/JaryHuang). Currently, some experiments are carried out on the VOC dataset, if you want to train your own dataset, more details can be refer to the links above.
 
 ### Losses
 
@@ -150,16 +157,56 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 
 | Test |AP|AP75|
 |:-:|:-:|:-:|
-|IoU|51.01|54.74|
-|GIoU|51.06|55.48|
-|DIoU|51.31|55.71|
-|CIoU|51.44|56.16|
+|IoU|51.0|54.7|
+|GIoU|51.1|55.4|
+|DIoU|51.3|55.7|
+|CIoU|51.5|56.4|
+|CIoU 16|53.3|58.2|
 
+##### "16" means bbox regression weight is set to 16.
+## Cluster-NMS
+
+#### Hardware
+ - 1 RTX 2080 Ti
+ - Intel(R) Xeon(R) CPU E5-2678 v3 @ 2.50GHz
+
+| Backbone  | Loss  | Regression weight  | NMS  | FPS  | time | box AP | box AP75 |
+|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|
+| Resnet50-FPN | CIoU  | 5  |          Fast NMS           |**28.8**|**34.7**|  50.7  |  56.2  |
+| Resnet50-FPN | CIoU  | 5  |        Original NMS         |  17.8  |  56.1  |  51.5  |  56.4  |
+| Resnet50-FPN | CIoU  | 5  |         DIoU-NMS            |  11.4  |  87.6  |  51.9  |  56.6  |
+| Resnet50-FPN | CIoU  | 5  |        Cluster-NMS          |  28.0  |  35.7  |  51.5  |  56.4  |
+| Resnet50-FPN | CIoU  | 5  |      Cluster-DIoU-NMS       |  28.0  |  35.7  |  51.9  |  56.6  |
+| Resnet50-FPN | CIoU  | 5  |     Weighted Cluster-NMS    |  26.8  |  37.3  |  51.9  |  56.3  |
+| Resnet50-FPN | CIoU  | 5  | Weighted + Cluster-DIoU-NMS |  26.5  |  37.8  |**52.4**|**57.0**|
+
+#### Hardware
+ - 1 RTX 2080
+ - Intel(R) Core(TM) i7-9700K CPU @ 3.60GHz
+
+| Backbone  | Loss  | Regression weight  | NMS  | FPS  | time | box AP | box AP75 |
+|:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|
+| Resnet50-FPN | CIoU  | 16  |        Original NMS         |  19.7  |  50.9  |  53.3  |  58.2  |
+| Resnet50-FPN | CIoU  | 16  |        Cluster-NMS          |  28.0  |  35.7  |  53.4  |  58.2  |
+| Resnet50-FPN | CIoU  | 16  |      Cluster-DIoU-NMS       |  28.0  |  35.7  |  53.7  |  58.6  |
+| Resnet50-FPN | CIoU  | 16  |     Weighted Cluster-NMS    |  26.9  |  37.2  |  53.8  |  58.7  |
+| Resnet50-FPN | CIoU  | 16  | Weighted + Cluster-DIoU-NMS |  26.3  |  38.0  |**54.1**|**59.0**|
+#### Note:
+ - Merge NMS is a simplified version of Weighted-NMS. It just use score vector for weighted coordinates, not combine score and IoU. (Refer to [CAD](https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&arnumber=8265304) for the details of Weighted-NMS.) Here the box coordinate weighted average is only performed in `IoU> 0.8`. (We searched that `IoU > NMS thresh` is not good for SSD and `IoU>0.9` is almost same to `Cluster-NMS`.)
+ 
+ - We further incorporate DIoU into Weighted Cluster-NMS for SSD which can get higher AP.
+  
+ - Note that Torchvision NMS has the fastest speed, that is owing to CUDA imprementation and engineering accelerations (like upper triangular IoU matrix only). However, our Cluster-NMS requires less iterations for NMS and can also be further accelerated by adopting engineering tricks.
+ 
+ - Currently, Torchvision NMS use IoU as criterion, not DIoU. However, if we directly replace IoU with DIoU in Original NMS, it will costs much more time due to the sequence operation. Now, Cluster-DIoU-NMS will significantly speed up DIoU-NMS and obtain exactly the same result.
+ 
+ - Torchvision NMS is a function in Torchvision>=0.3, and our Cluster-NMS can be applied to any projects that use low version of Torchvision and other deep learning frameworks as long as it can do matrix operations. **No other import, no need to compile, less iteration, fully GPU-accelerated and better performance**.
 ## Pretrained weights
 
 Here are the trained models using the configurations in this repository.
 
- - [IoU](https://pan.baidu.com/s/1eNcD9CrnRL79VIH5lsOTPA)
- - [GIoU](https://pan.baidu.com/s/1_b1RS5qaRVJUwi27mcpXow)
- - [DIoU](https://pan.baidu.com/s/1x1keVP958-DyN_OuWdDAXA)
- - [CIoU](https://pan.baidu.com/s/10sodf37QjTVMEzOIVD8cNA)
+ - [IoU bbox regression weight 5](https://pan.baidu.com/s/1eNcD9CrnRL79VIH5lsOTPA)
+ - [GIoU bbox regression weight 5](https://pan.baidu.com/s/1_b1RS5qaRVJUwi27mcpXow)
+ - [DIoU bbox regression weight 5](https://pan.baidu.com/s/1x1keVP958-DyN_OuWdDAXA)
+ - [CIoU bbox regression weight 5](https://share.weiyun.com/5LSzur7)
+ - [CIoU bbox regression weight 16](https://share.weiyun.com/5U3OHez)
