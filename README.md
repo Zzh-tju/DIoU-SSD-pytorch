@@ -188,7 +188,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 |:-------------:|:-------:|:-------:|:------------------------------------:|:----:|:----:|:----:|:----:|
 | Resnet50-FPN | CIoU  | 16  |        Original NMS         |  19.7  |  50.9  |  53.3  |  58.2  |
 | Resnet50-FPN | CIoU  | 16  |        Cluster-NMS          |  28.0  |  35.7  |  53.4  |  58.2  |
-| Resnet50-FPN | CIoU  | 16  |      Cluster-DIoU-NMS       |  28.0  |  35.7  |  53.7  |  58.6  |
+| Resnet50-FPN | CIoU  | 16  |      Cluster-DIoU-NMS       |  26.5  |  37.7  |  53.7  |  58.6  |
 | Resnet50-FPN | CIoU  | 16  |     Weighted Cluster-NMS    |  26.9  |  37.2  |  53.8  |  58.7  |
 | Resnet50-FPN | CIoU  | 16  | Weighted + Cluster-DIoU-NMS |  26.3  |  38.0  |**54.1**|**59.0**|
 #### Note:
