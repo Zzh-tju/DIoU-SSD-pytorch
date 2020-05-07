@@ -176,7 +176,7 @@ if you want to visual the box, you can add the command --visbox True(default Fal
 | Resnet50-FPN | CIoU  | 5  |        Original NMS         |  17.8  |  56.1  |  51.5  |  56.4  |
 | Resnet50-FPN | CIoU  | 5  |         DIoU-NMS            |  11.4  |  87.6  |  51.9  |  56.6  |
 | Resnet50-FPN | CIoU  | 5  |        Cluster-NMS          |  28.0  |  35.7  |  51.5  |  56.4  |
-| Resnet50-FPN | CIoU  | 5  |      Cluster-DIoU-NMS       |  28.0  |  35.7  |  51.9  |  56.6  |
+| Resnet50-FPN | CIoU  | 5  |      Cluster-DIoU-NMS       |  27.7  |  36.1  |  51.9  |  56.6  |
 | Resnet50-FPN | CIoU  | 5  |     Weighted Cluster-NMS    |  26.8  |  37.3  |  51.9  |  56.3  |
 | Resnet50-FPN | CIoU  | 5  | Weighted + Cluster-DIoU-NMS |  26.5  |  37.8  |**52.4**|**57.0**|
 
