@@ -33,12 +33,6 @@ Losses can be chosen with the `losstype` option in the `config/config.py` file T
 VOC:
   'losstype': 'Ciou'
 ```
-### DIoU-NMS
-NMS can be chosen with the `nms_kind` option in the `config/config.py` file. If set it to `greedynms`, it means using greedy-NMS.
-Besides that, similar to DIoU-NMS in Faster R-CNN, we also introduce `beta1` for DIoU-NMS in SSD, that is DIoU = IoU - R_DIoU ^ {beta1}. With this operation, DIoU-NMS may perform better than default beta1=1.0. I recommand for SSD `beta1=0.5~1.0` will be good.
-```
-  'nms_kind': "diounms"
-```
 
 ## Fold-Structure
 The fold structure as follow:
@@ -200,7 +194,7 @@ Currently, NMS only surports `cluster_nms`, `cluster_diounms`, `cluster_weighted
  
  - We further incorporate DIoU into Weighted Cluster-NMS for SSD which can get higher AP.
   
- - Note that Torchvision NMS has the fastest speed, that is owing to CUDA imprementation and engineering accelerations (like upper triangular IoU matrix only). However, our Cluster-NMS requires less iterations for NMS and can also be further accelerated by adopting engineering tricks.
+ - Note that Torchvision NMS has the fastest speed, that is owing to CUDA implementation and engineering accelerations (like upper triangular IoU matrix only). However, our Cluster-NMS requires less iterations for NMS and can also be further accelerated by adopting engineering tricks.
  
  - Currently, Torchvision NMS use IoU as criterion, not DIoU. However, if we directly replace IoU with DIoU in Original NMS, it will costs much more time due to the sequence operation. Now, Cluster-DIoU-NMS will significantly speed up DIoU-NMS and obtain exactly the same result.
  
