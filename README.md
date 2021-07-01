@@ -18,7 +18,7 @@ This is the code for our papers:
   author= {Zhaohui Zheng, Ping Wang, Dongwei Ren, Wei Liu, Rongguang Ye, Qinghua Hu, Wangmeng Zuo},
   title={Enhancing Geometric Factors in Model Learning and Inference for Object Detection and Instance Segmentation},
   journal={IEEE Transactions on Cybernetics},
-  year={2020}
+  year={2021}
 }
 ```
 
